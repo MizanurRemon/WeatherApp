@@ -1,15 +1,19 @@
 <div class="container">
 	<div class="upper-part">
-		<img *ngIf="14>15"
+		<img *ngIf="myDatas.main.temp>STANDARD_TEMP"
 			src="../assets/hot.jpeg">
-		<img *ngIf="14<=15"
+		<img *ngIf="myDatas.main.temp<=STANDARD_TEMP"
 			src="../assets/cold.jpeg">
 
 		<div class="weather-data">
-			<div class="location">Dhaka</div>
+			<div class="location">{{myDatas.name}}</div>
 
 			<div class="temperature">
-				{{26.37 | number: '1.0-0'}}°C
+				{{myDatas.main.temp | number: '1.0-0'}}°C
+			</div>
+
+			<div class="feelings">
+				feels like {{myDatas.main.feels_like}}°C
 			</div>
 		</div>
 	</div>
@@ -20,25 +24,33 @@
 			<div class="info-block">
 				<div class="info-block-label">min</div>
 
-				<div class="info-block-value">10°C</div>
+				<div class="info-block-value">
+					{{myDatas.main.temp_min}}
+				</div>
 			</div>
 
-      <div class="info-block">
+			<div class="info-block">
 				<div class="info-block-label">max</div>
 
-				<div class="info-block-value">33°C</div>
+				<div class="info-block-value">
+					{{myDatas.main.temp_max}}
+				</div>
 			</div>
 
-      <div class="info-block">
+			<div class="info-block">
 				<div class="info-block-label">humidity</div>
 
-				<div class="info-block-value">77%</div>
+				<div class="info-block-value">
+					{{myDatas.main.humidity}}%
+				</div>
 			</div>
 
-      <div class="info-block">
+			<div class="info-block">
 				<div class="info-block-label">wind</div>
 
-				<div class="info-block-value">12 km/h</div>
+				<div class="info-block-value">
+					{{myDatas.wind.speed}} km/h
+				</div>
 			</div>
 		</div>
 	</div>
