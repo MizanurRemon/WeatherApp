@@ -1,0 +1,80 @@
+export type PlaceList = Places[]
+
+export interface Places {
+  name: string
+  local_names: LocalNames
+  lat: number
+  lon: number
+  country: string
+  state: string
+}
+
+export interface LocalNames {
+  hi: string
+  ar: string
+  ia: string
+  hy: string
+  ur: string
+  mr: string
+  kk: string
+  it: string
+  fr: string
+  gu: string
+  tg: string
+  sk: string
+  ku: string
+  sr: string
+  he: string
+  sv: string
+  is: string
+  my: string
+  el: string
+  az: string
+  kn: string
+  bo: string
+  es: string
+  ta: string
+  zh: string
+  mk: string
+  lv: string
+  eu: string
+  lt: string
+  ka: string
+  be: string
+  pl: string
+  mn: string
+  ru: string
+  bn: string
+  gl: string
+  am: string
+  ko: string
+  tk: string
+  os: string
+  dv: string
+  ce: string
+  io: string
+  de: string
+  bg: string
+  yi: string
+  oc: string
+  tr: string
+  fa: string
+  hu: string
+  fy: string
+  ug: string
+  ba: string
+  ro: string
+  te: string
+  la: string
+  ja: string
+  pt: string
+  sl: string
+  ml: string
+  uk: string
+  th: string
+  et: string
+  eo: string
+  ht: string
+  cs: string
+  en: string
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MyserviceService } from './services/myservice.service';
 import { WeatherService } from './services/weather.service';
 import { take } from 'rxjs';
-import { WeatherData } from './models/weather.model';
 
 @Component({
   selector: 'app-root',
@@ -10,37 +10,61 @@ import { WeatherData } from './models/weather.model';
 })
 export class AppComponent implements OnInit {
   title = 'WeatherApp';
-  STANDARD_TEMP = 20;
-  place: string = "dhaka";
-  temp: any;
-  desc: any;
 
-  constructor(private weatherService: WeatherService) {
+  cityName: String = "london";
 
+
+
+  constructor(private myService: MyserviceService, private weatherService: WeatherService) { }
+
+  ngOnInit() {
+    this.getCurrentLocation()
+    this.myService.setValue(this.cityName)
+    
   }
 
-  weatherData?: WeatherData;
-
-  ngOnInit(): void {
-    this.getWeatherData(this.place)
-    this.place = ''
+  onSearch() {
+    console.log(this.cityName);
+    this.myService.setValue(this.cityName)
+    this.cityName = ''
   }
+  getCurrentLocation() {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
 
-  onSearch(){
-    this.getWeatherData(this.place)
-    this.place = ''
-  }
+            if (position) {
+              // console.log(
+              //   'Latitude: ' +
+              //   position.coords.latitude + " " +
+              //   'Longitude: ' +
+              //   position.coords.longitude
+              // );
+              let lat = position.coords.latitude;
+              let lng = position.coords.longitude;
 
-  private getWeatherData(cityName: any){
-    this.weatherService.get_city_weather(cityName).pipe(take(1)).subscribe({
-      next: (response) => {
+             // const details = this.weatherService.get_places(lat, lng);
 
-        this.weatherData = response
+              this.weatherService.get_places(lat, lng).pipe(take(1)).subscribe({
+                next: (response) => {
+                      const myData = response;
+                      this.cityName = myData[0].name
+                      console.log("lat: "+myData[0].name)
+                }
+              });
 
-        this.temp = this.weatherData.main.temp
-        this.desc = this.weatherData.weather[0].description
-
-       // console.log(this.weatherData)
+              const location = {
+                lat,
+                lng,
+              };
+              resolve(location);
+            }
+          },
+          (error) => console.log(error)
+        );
+      } else {
+        reject('Geolocation is not supported by this browser.');
       }
     });
   }
