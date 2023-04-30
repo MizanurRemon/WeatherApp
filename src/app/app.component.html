@@ -1,19 +1,27 @@
+<div class="search">
+	<form #form = "ngForm" (submit) = "onSearch()">
+		<input type="text" placeholder="search city" name = "city" [(ngModel)]="place">
+	</form>
+</div>
+
 <div class="container">
 	<div class="upper-part">
-		<img *ngIf="myDatas.main.temp>STANDARD_TEMP"
+		<img *ngIf="temp>STANDARD_TEMP"
 			src="../assets/hot.jpeg">
-		<img *ngIf="myDatas.main.temp<=STANDARD_TEMP"
+		<img *ngIf="temp<=STANDARD_TEMP"
 			src="../assets/cold.jpeg">
 
 		<div class="weather-data">
-			<div class="location">{{myDatas.name}}</div>
+			<div class="location">
+				{{weatherData?.name}}
+			</div>
 
 			<div class="temperature">
-				{{myDatas.main.temp | number: '1.0-0'}}°C
+				{{weatherData?.main?.temp}}°C
 			</div>
 
 			<div class="feelings">
-				feels like {{myDatas.main.feels_like}}°C
+				feels like {{weatherData?.main?.feels_like | number: '1.0-0'}}°C
 			</div>
 		</div>
 	</div>
@@ -25,7 +33,7 @@
 				<div class="info-block-label">min</div>
 
 				<div class="info-block-value">
-					{{myDatas.main.temp_min}}
+					{{weatherData?.main?.temp_min}}°C
 				</div>
 			</div>
 
@@ -33,7 +41,7 @@
 				<div class="info-block-label">max</div>
 
 				<div class="info-block-value">
-					{{myDatas.main.temp_max}}
+					{{weatherData?.main?.temp_max}}°C
 				</div>
 			</div>
 
@@ -41,7 +49,7 @@
 				<div class="info-block-label">humidity</div>
 
 				<div class="info-block-value">
-					{{myDatas.main.humidity}}%
+					{{weatherData?.main?.humidity}}%
 				</div>
 			</div>
 
@@ -49,9 +57,26 @@
 				<div class="info-block-label">wind</div>
 
 				<div class="info-block-value">
-					{{myDatas.wind.speed}} km/h
+					{{weatherData?.wind?.speed}} km/h
 				</div>
 			</div>
+
+			<div class="info-block">
+				<div class="info-block-label">pressure</div>
+
+				<div class="info-block-value">
+					{{weatherData?.main?.pressure}}p
+				</div>
+			</div>
+
+			<div class="info-block">
+				<div class="info-block-label">description</div>
+
+				<div class="info-block-value">
+					{{desc}}
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>

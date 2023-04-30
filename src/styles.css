@@ -90,7 +90,7 @@ body {
 .lower-part {
   width: 100%;
   height: 60%;
-  padding: 10px;
+  padding: 5%;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -127,4 +127,20 @@ body {
   color: white;
   font-size: 16px;
   font-weight: bolder;
+}
+
+.search{
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.search input{
+  background-color: var(--shadow-light);
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  padding: 1em;
+  color: var(--grey-1);
+  font-size: 12px;
+  color: white;
 }
