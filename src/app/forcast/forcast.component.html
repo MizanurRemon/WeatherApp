@@ -1,4 +1,4 @@
-<div class="search">
+<!-- <div class="search">
 	<form #form="ngForm"
 		(submit)="onSearch()">
 		<input [(ngModel)]="place"
@@ -6,8 +6,36 @@
 			placeholder="search city"
 			name="city">
 	</form>
-</div>
+</div> -->
+
+<div *ngIf></div>
 
 <div class="container">
+
+	<div class="forecasr-upper">
+
+		<div class="place-label">
+			<fa-icon [icon]="menuIcon"
+				class="place-icon"></fa-icon>
+
+			<div class="place-title">
+				{{forcastData?.city?.name}}
+			</div>
+		</div>
+
+		<div class="forcast-text">Daily Forcast</div>
+	</div>
+
+	
+
+	<ul class="forcast-list">
+		<li *ngFor="let item of forcastData?.list">
+
+			<div class="forcast-item-style">
+				{{item.main.feels_like}}
+			</div>
+
+		</li>
+	</ul>
 
 </div>

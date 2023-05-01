@@ -4,6 +4,7 @@ import { WeatherService } from '../services/weather.service';
 import { WeatherData } from '../models/weather.model';
 import { take } from 'rxjs';
 import { MyserviceService } from '../services/myservice.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,27 +21,25 @@ export class HomeComponent  implements OnInit{
   //icons
   menuIcon= faBars
 
-  constructor(private weatherService: WeatherService, private myService: MyserviceService) {
+  constructor(private weatherService: WeatherService, private myService: MyserviceService, private router: Router) {
 
   }
 
   place: any;
+  navPlace: any;
 
   weatherData?: WeatherData;
 
   ngOnInit(): void {
     this.place = this.myService.getValue();
     this.getWeatherData(this.place)
+    this.navPlace = this.place;
     this.place = ''
   }
 
-//   get val() {
-//     console.log("place:: "+this.myService.getValue())
-//     return this.myService.getValue();
-// }
-
   onSearch(){
     this.getWeatherData(this.place)
+    this.navPlace = this.place;
     this.place = ''
   }
 
@@ -56,5 +55,9 @@ export class HomeComponent  implements OnInit{
       // console.log("lat: "+this.weatherData.coord.lat+" "+this.weatherData.coord.lon)
       }
     });
+  }
+
+  redirectToForcast(){
+    this.router.navigate(['/forcast/'+this.navPlace]);
   }
 }

@@ -13,18 +13,15 @@ export class AppComponent implements OnInit {
 
   cityName: String = "london";
 
-
-
   constructor(private myService: MyserviceService, private weatherService: WeatherService) { }
 
   ngOnInit() {
     this.getCurrentLocation()
     this.myService.setValue(this.cityName)
-    
   }
 
   onSearch() {
-    console.log(this.cityName);
+    //console.log(this.cityName);
     this.myService.setValue(this.cityName)
     this.cityName = ''
   }
@@ -35,24 +32,20 @@ export class AppComponent implements OnInit {
           (position) => {
 
             if (position) {
-              // console.log(
-              //   'Latitude: ' +
-              //   position.coords.latitude + " " +
-              //   'Longitude: ' +
-              //   position.coords.longitude
-              // );
+         
               let lat = position.coords.latitude;
               let lng = position.coords.longitude;
 
              // const details = this.weatherService.get_places(lat, lng);
 
-              this.weatherService.get_places(lat, lng).pipe(take(1)).subscribe({
-                next: (response) => {
-                      const myData = response;
-                      this.cityName = myData[0].name
-                      console.log("lat: "+myData[0].name)
-                }
-              });
+              // this.weatherService.get_places(lat, lng).pipe(take(1)).subscribe({
+              //   next: (response) => {
+              //         const myData = response;
+              //         this.cityName = myData[0].name
+              //         console.log("lat: "+myData[0].name)
+              //         this.myService.setValue(this.cityName)
+              //   }
+              // });
 
               const location = {
                 lat,

@@ -4,13 +4,16 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { WeatherData } from '../models/weather.model';
 import { PlaceList } from '../models/places.model';
+import { WeatherForacast } from '../models/forcast.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
+  BASE_URL = 'https://api.openweathermap.org/data/2.5/';
+  WEATHER = this.BASE_URL + 'weather';
+  FORCAST = this.BASE_URL + 'forecast';
   APP_ID = "a6c534c3d3cea55a218f5ace5795fbd7";
   UNITS = 'metric'
 
@@ -25,17 +28,26 @@ export class WeatherService {
     qparams = qparams.append("appid", this.APP_ID);
     qparams = qparams.append("units", this.UNITS)
 
-    return this.http.get<WeatherData>(this.BASE_URL, { params: qparams })
+    return this.http.get<WeatherData>(this.WEATHER, { params: qparams })
 
   }
 
-  get_places(lat:any, long:any):Observable<PlaceList>{
+  get_weather_forcast(cityName: any): Observable<WeatherForacast> {
+    let qparams = new HttpParams();
+    qparams = qparams.append("q", cityName);
+    qparams = qparams.append("appid", this.APP_ID);
+    qparams = qparams.append("units", this.UNITS)
+
+    return this.http.get<WeatherForacast>(this.FORCAST, { params: qparams });
+  }
+
+  get_places(lat: any, long: any): Observable<PlaceList> {
     let qparams = new HttpParams();
     qparams = qparams.append("lat", lat);
     qparams = qparams.append("lon", long);
     qparams = qparams.append("appid", this.APP_ID);
     qparams = qparams.append("limit", 0)
-    
+
     return this.http.get<PlaceList>(this.GEOCODE_BASE_URL, { params: qparams })
   }
 }
