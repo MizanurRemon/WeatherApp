@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../services/weather.service';
 import { take } from 'rxjs';
 import { WeatherForacast } from '../models/forcast.model';
-import { faBars, faLocation } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCloud, faLocation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-forcast',
@@ -12,6 +12,7 @@ import { faBars, faLocation } from '@fortawesome/free-solid-svg-icons';
 })
 export class ForcastComponent implements OnInit {
   menuIcon= faLocation
+  cloudIcon = faCloud
 
   place: any;
   forcastData?: WeatherForacast

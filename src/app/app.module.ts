@@ -13,7 +13,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     ForcastComponent,
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,

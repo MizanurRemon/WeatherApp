@@ -1,0 +1,26 @@
+.lower-part-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.view-forcast-label {
+  position: absolute;
+  right: 0;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.488);
+  padding: 2%;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.view-forcast-label:hover {
+  background-color: rgb(11, 3, 11);
+}
+
+.more-iformation-label {
+  font-size: 12px;
+  color: white;
+}

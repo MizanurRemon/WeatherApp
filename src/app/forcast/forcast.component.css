@@ -8,9 +8,9 @@
   --shadow-light: rgba(255, 255, 255, 0.1);
 }
 
-.forecasr-upper {
+.forecast-upper {
   width: 100%;
-  height: 10%;
+  height: 15%;
   padding: 5%;
   background-color: rgba(29, 29, 29, 0.368);
   border-top-left-radius: 20px;
@@ -18,18 +18,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .place-label {
   display: flex;
   flex-direction: row;
   justify-content: center;
- margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .place-icon {
   color: white;
-  margin-right: 2%;
+  margin-right: 5px;
 }
 
 .place-title {
@@ -38,24 +39,96 @@
 
 .forcast-text {
   color: white;
- 
   font-size: 12px;
 }
 
 .forcast-list {
   list-style: none;
   position: relative;
-  max-height: 88%;
+  height: 84%;
   overflow-y: scroll;
-}
-
-.forcast-item-style {
-  padding: 2%;
-  background-color: var(--shadow-dark);
-  margin: 10px;
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
   width: 2px;
 }
+
+.forcast-item {
+  background-color: var(--shadow-dark);
+  margin: 2%;
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.forcast-item-title {
+  padding: 10px;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--shadow-light);
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.forcast-item-details{
+  position: relative;
+  height: 100%;
+  width: 80%;
+  padding: 2%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.forcast-title-time {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.forcast-title-date {
+  color: white;
+  font-size: 10px;
+}
+
+
+.weather-icon {
+  height: 40px;
+  width: 40px;
+  /* filter: opacity(0.5)  drop-shadow(0 0 0 rgb(255, 255, 0)); */
+}
+
+.info-block {
+  padding: 10px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-block-label {
+  color: white;
+  font-size: 11px;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+.info-block-value {
+  color: white;
+  font-size: 10px;
+  font-weight: bolder;
+}
+
+.forcast-title-temp{
+  color: white;
+  font-weight: bolder;
+}
+
