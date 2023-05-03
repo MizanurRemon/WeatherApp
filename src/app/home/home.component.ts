@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToForcast() {
-    this.router.navigate(['/forcast/' + this.navPlace]);
+    this.router.navigate(['/forcast/' + this.navPlace], { });
   }
 
   getCurrentLocation() {

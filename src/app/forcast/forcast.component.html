@@ -12,75 +12,75 @@
 
 <div class="container">
 
-	<div class="forecast-upper">
+<div class="forecast-upper">
 
-		<div class="place-label">
-			<fa-icon [icon]="menuIcon"
-				class="place-icon"></fa-icon>
+	<div class="place-label">
+		<fa-icon [icon]="menuIcon"
+			class="place-icon"></fa-icon>
 
-			<div class="place-title">
-				{{forcastData?.city?.name}}
-			</div>
+		<div class="place-title">
+			{{forcastData?.city?.name}}
 		</div>
-
-		<div class="forcast-text">Weather Forcast</div>
 	</div>
 
-	<ul class="forcast-list">
-		<li *ngFor="let item of forcastData?.list">
+	<div class="forcast-text">Weather Forcast</div>
+</div>
 
-			<div class="forcast-item">
-				<div class="forcast-item-title">
+<ul class="forcast-list">
+	<li *ngFor="let item of forcastData?.list">
 
-					<div class="forcast-title-temp">
-						{{item.main.temp |  number: '1.0-0'}}°C
-					</div>
+		<div class="forcast-item">
+			<div class="forcast-item-title">
 
-					<img class="weather-icon"
+				<div class="forcast-title-temp">
+					{{item.main.temp |  number: '1.0-0'}}°C
+				</div>
+
+				<img class="weather-icon"
 					src='{{"https://openweathermap.org/img/wn/"+item.weather[0].icon+"@2x.png"}}'>
 
 					<div class="forcast-title-time">{{item.dt_txt | date:"hh:mm a"}}</div>
 					<div class="forcast-title-date">{{item.dt_txt | date:"dd MMM, yy"}}</div>
 
-			
-				</div>
-				<div class="forcast-item-details">
-					
-					<div class="info-block">
-						<div class="info-block-label">min</div>
-		
-						<div class="info-block-value">
-							{{item.main.temp_min | number: '1.0-0'}}°C
-						</div>
-					</div>
-		
-					<div class="info-block">
-						<div class="info-block-label">max</div>
-		
-						<div class="info-block-value">
-							{{item.main.temp_min | number: '1.0-0'}}°C
-						</div>
-					</div>
 
-					<div class="info-block">
-						<div class="info-block-label">fells like</div>
-		
-						<div class="info-block-value">
-							{{item.main.feels_like | number: '1.0-0'}}°C
-						</div>
+			</div>
+			<div class="forcast-item-details">
+
+				<div class="info-block">
+					<div class="info-block-label">min</div>
+
+					<div class="info-block-value">
+						{{item.main.temp_min | number: '1.0-0'}}°C
 					</div>
-		
-					<div class="info-block">
-						<div class="info-block-label">humidity</div>
-		
-						<div class="info-block-value">
-							{{item.main.humidity}}%
-						</div>
+				</div>
+
+				<div class="info-block">
+					<div class="info-block-label">max</div>
+
+					<div class="info-block-value">
+						{{item.main.temp_min | number: '1.0-0'}}°C
+					</div>
+				</div>
+
+				<div class="info-block">
+					<div class="info-block-label">fells like</div>
+
+					<div class="info-block-value">
+						{{item.main.feels_like | number: '1.0-0'}}°C
+					</div>
+				</div>
+
+				<div class="info-block">
+					<div class="info-block-label">humidity</div>
+
+					<div class="info-block-value">
+						{{item.main.humidity}}%
 					</div>
 				</div>
 			</div>
+		</div>
 
-		</li>
-	</ul>
+	</li>
+</ul>
 
 </div>
