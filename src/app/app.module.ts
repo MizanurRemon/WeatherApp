@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForcastComponent } from './forcast/forcast.component';
 import { HomeComponent } from './home/home.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
+    MatMenuModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

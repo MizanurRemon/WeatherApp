@@ -16,28 +16,28 @@
 		<img *ngIf="temp<=STANDARD_TEMP"
 			src="../assets/cold.jpeg">
 
-		<div class="menu-toggler" >
-			<!-- <fa-icon [icon]="menuIcon"
-				class="menu-icon" (click) = "redirectToForcast()"></fa-icon>
-		 -->
-				<!-- <div class="menu" *ngIf="isMenuOpened">
-					<div class="menu-item" (click)="redirectToForcast()">
-						view forcast
-					</div>
-					<div class="menu-item">
-						about
-					</div>
-					
-				</div> -->
-				<!-- <div class="menu" *ngIf="isMenuOpened">
+		<div class="menu-toggler">
+			<!-- (click) = "redirectToForcast()" -->
+			<fa-icon [icon]="menuIcon"
+				(click)="toggleMenu()"
+				class="menu-icon"></fa-icon>
+			<div *ngIf="isMenuOpened"
+				class="menu">
+				<div (click)="redirectToForcast()"
+					class="menu-item">
+					view forcast
+				</div>
+				<div class="menu-item">about</div>
+
+			</div>
+			<!-- <div class="menu" *ngIf="isMenuOpened">
 
 					<option value="1" class="menu-item" (click)="redirectToForcast()">Forcast</option>
 				
 					<option value="1" class="menu-item">About Us</option>
 				</div> -->
 
-				
-			</div>
+		</div>
 
 		<div class="weather-data">
 			<div class="location">
@@ -51,6 +51,7 @@
 			<div class="feelings">
 				feels like {{weatherData?.main?.feels_like | number: '1.0-0'}}°C
 			</div>
+			
 		</div>
 	</div>
 
@@ -58,7 +59,10 @@
 		<div class="lower-part-title">
 			<div class="more-iformation-label">More Information</div>
 
-			<div class="view-forcast-label" (click)="redirectToForcast()">View forcast</div>
+			<div (click)="redirectToForcast()"
+				class="view-forcast-label">
+				View forcast
+			</div>
 		</div>
 		<div class="more-info-container">
 			<div class="info-block">

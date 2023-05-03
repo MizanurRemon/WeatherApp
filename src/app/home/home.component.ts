@@ -22,26 +22,12 @@ export class HomeComponent implements OnInit {
   //icons
   menuIcon = faBars
 
-  // @ViewChild('toggleButton')
-  // toggleButton!: ElementRef;
-  // @ViewChild('menu') menu: ElementRef;
 
-  constructor(private weatherService: WeatherService, private myService: MyserviceService, private router: Router, private renderer: Renderer2) {
-    // this.renderer.listen('window', 'click', (e: Event) => {
-    //   /**
-    //    * Only run when toggleButton is not clicked
-    //    * If we don't check this, all clicks (even on the toggle button) gets into this
-    //    * section which in the result we might never see the menu open!
-    //    * And the menu itself is checked here, and it's where we check just outside of
-    //    * the menu and button the condition abbove must close the menu
-    //    */
-    //   if (!this.toggleButton.nativeElement.contains(e.target) && !this.menu.nativeElement.contains(e.target)) {
-    //     this.isMenuOpened = false;
-    //   }
-    // });
+  constructor(private weatherService: WeatherService, private myService: MyserviceService, private router: Router) {
+
   }
 
-  place: any;
+  place: any = "Dhaka";
   navPlace: any;
 
   weatherData?: WeatherData;
@@ -49,6 +35,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     //this.place = this.myService.getValue();
     this.getCurrentLocation()
+    this.getWeatherData(this.place)
     this.navPlace = this.place;
     this.place = ''
   }
@@ -68,7 +55,7 @@ export class HomeComponent implements OnInit {
         this.temp = this.weatherData.main.temp
         this.desc = this.weatherData.weather[0].description
 
-        // console.log("lat: "+this.weatherData.coord.lat+" "+this.weatherData.coord.lon)
+        //console.log("lat: "+this.weatherData.coord.lat+" "+this.weatherData.coord.lon)
       }
     });
   }
@@ -78,17 +65,17 @@ export class HomeComponent implements OnInit {
   }
 
   getCurrentLocation() {
+    
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
+        
         navigator.geolocation.getCurrentPosition(
           (position) => {
-
+           
             if (position) {
-
+             
               let lat = position.coords.latitude;
               let lng = position.coords.longitude;
-
-              const details = this.weatherService.get_places(lat, lng);
 
               this.weatherService.get_places(lat, lng).pipe(take(1)).subscribe({
                 next: (response) => {
@@ -106,13 +93,20 @@ export class HomeComponent implements OnInit {
               };
               resolve(location);
             }
+
+            
           },
           (error) => console.log(error)
         );
+
+        
       } else {
+        console.log('Geolocation is not supported by this browser.')
         reject('Geolocation is not supported by this browser.');
       }
     });
+  
+  
   }
 
  

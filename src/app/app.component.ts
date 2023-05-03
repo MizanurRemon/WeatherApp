@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private myService: MyserviceService, private weatherService: WeatherService) { }
 
   ngOnInit() {
-    this.getCurrentLocation()
+
     this.myService.setValue(this.cityName)
   }
 
@@ -25,40 +25,5 @@ export class AppComponent implements OnInit {
     this.myService.setValue(this.cityName)
     this.cityName = ''
   }
-  getCurrentLocation() {
-    return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-
-            if (position) {
-         
-              let lat = position.coords.latitude;
-              let lng = position.coords.longitude;
-
-             // const details = this.weatherService.get_places(lat, lng);
-
-              // this.weatherService.get_places(lat, lng).pipe(take(1)).subscribe({
-              //   next: (response) => {
-              //         const myData = response;
-              //         this.cityName = myData[0].name
-              //         console.log("lat: "+myData[0].name)
-              //         this.myService.setValue(this.cityName)
-              //   }
-              // });
-
-              const location = {
-                lat,
-                lng,
-              };
-              resolve(location);
-            }
-          },
-          (error) => console.log(error)
-        );
-      } else {
-        reject('Geolocation is not supported by this browser.');
-      }
-    });
-  }
+ 
 }
